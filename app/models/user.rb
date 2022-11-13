@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
         self.reviews.order(:star_rating).last.product
     end
 
+    def remove_reviews(product)
+        reviews.where(product_id: product.id).destroy_all
+    end
+
 end
